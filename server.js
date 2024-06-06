@@ -1,7 +1,9 @@
 const express = require('express')
-const mongoose = require('mongoose')
+
 const articleRouter = require('./routes/articles')
 const app = express()
+
+const mongoose = require('mongoose');
 
 mongoose.connect('mongodb://localhost:27017/blog');
 

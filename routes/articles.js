@@ -7,10 +7,11 @@ router.get('/new', (req, res) => {
 })
 
 router.get('/:id', async (req, res) => {
-    const article = await Article.findById(req.params.id)
-    if (article == null) res.redirect('/')
-    res.render('articles/show', { article: article })
-    // res.render(req.params.id)
+    // const article = await Article.findById(req.params.id)
+    // if (article == null) res.redirect('/')
+    // res.render('articles/show', { article: article })
+    res.send(req.params.id)
+    console.log(req.params.id)
 })
 
 router.post('/', async (req, res) => {
@@ -21,7 +22,7 @@ router.post('/', async (req, res) => {
     })
     try {
         article = await article.save()
-        res.redirect(`/articles/${article.id}`)
+        res.redirect(`articles/${article.id}`)
         console.log(e)
     } catch (e) {
         res.render('articles/new', { article: article })
